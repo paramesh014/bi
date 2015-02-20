@@ -65,7 +65,7 @@ dec(long double x)
 	return (u.e);
 }
 
-#pragma STDC FENV_ACCESS ON
+//#pragma STDC FENV_ACCESS ON //paramesh
 
 /*
  * This is slow, but simple and portable. You should use hardware sqrt

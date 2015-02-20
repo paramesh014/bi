@@ -39,7 +39,7 @@ __FBSDID("$FreeBSD$");
  * gcc generates is acceptable, since the special cases have already been
  * handled.
  */
-#pragma	STDC CX_LIMITED_RANGE	ON
+//#pragma	STDC CX_LIMITED_RANGE	ON //paramesh
 
 float complex
 csqrtf(float complex z)

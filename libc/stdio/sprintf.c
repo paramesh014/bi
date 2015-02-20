@@ -38,11 +38,11 @@
 #include <limits.h>
 #include "local.h"
 
-#if defined(APIWARN)
+/*#if defined(APIWARN)
 __warn_references(sprintf,
     "warning: sprintf() is often misused, please use snprintf()");
 #endif
-
+*/
 int
 sprintf(char *str, const char *fmt, ...)
 {

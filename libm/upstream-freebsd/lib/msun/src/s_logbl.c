@@ -11,7 +11,7 @@
  */
 
 #ifndef lint
-static char rcsid[] = "$FreeBSD$";
+//static char rcsid[] = "$FreeBSD$"; //paramesh
 #endif
 
 #include <float.h>

@@ -588,7 +588,7 @@ sym_ntos(const struct res_sym *syms, int number, int *success) {
 		}
 	}
 
-	sprintf(unname, "%d", number);		/* XXX nonreentrant */
+	snprintf(unname, sizeof(unname), "%d", number);		/* XXX nonreentrant */
 	if (success)
 		*success = 0;
 	return (unname);
@@ -605,7 +605,7 @@ sym_ntop(const struct res_sym *syms, int number, int *success) {
 			return (syms->humanname);
 		}
 	}
-	sprintf(unname, "%d", number);		/* XXX nonreentrant */
+	snprintf(unname,sizeof(unname), "%d", number);		/* XXX nonreentrant */
 	if (success)
 		*success = 0;
 	return (unname);
@@ -625,7 +625,7 @@ p_type(int type) {
 		return (result);
 	if (type < 0 || type > 0xffff)
 		return ("BADTYPE");
-	sprintf(typebuf, "TYPE%d", type);
+	snprintf(typebuf,(int) sizeof(typebuf), "TYPE%d", type);
 	return (typebuf);
 }
 
@@ -661,7 +661,7 @@ p_class(int class) {
 		return (result);
 	if (class < 0 || class > 0xffff)
 		return ("BADCLASS");
-	sprintf(classbuf, "CLASS%d", class);
+	snprintf(classbuf,(int) sizeof(classbuf), "CLASS%d", class);
 	return (classbuf);
 }
 
@@ -703,7 +703,7 @@ p_option(u_long option) {
 	case RES_NO_NIBBLE2:	return "no-nibble2";
 #endif
 				/* XXX nonreentrant */
-	default:		sprintf(nbuf, "?0x%lx?", (u_long)option);
+	default:		snprintf(nbuf,(int) sizeof(nbuf), "?0x%lx?", (u_long)option);
 				return (nbuf);
 	}
 }
@@ -716,7 +716,7 @@ p_time(u_int32_t value) {
 	static char nbuf[40];		/* XXX nonreentrant */
 
 	if (ns_format_ttl((u_long)value, nbuf, sizeof nbuf) < 0)
-		sprintf(nbuf, "%u", value);
+		snprintf(nbuf,(int) sizeof(nbuf), "%u", value);
 	return (nbuf);
 }
 
@@ -745,7 +745,7 @@ p_sockun(union res_sockaddr_union u, char *buf, size_t size) {
 		break;
 #endif
 	default:
-		sprintf(ret, "[af%d]", u.sin.sin_family);
+		snprintf(ret,(int) sizeof(ret), "[af%d]", u.sin.sin_family);
 		break;
 	}
 	if (size > 0U) {
@@ -777,7 +777,7 @@ precsize_ntoa(u_int32_t prec)
 
 	val = mantissa * poweroften[exponent];
 
-	(void) sprintf(retbuf, "%lu.%.2lu", val/100, val%100);
+	(void) snprintf(retbuf,(int) sizeof(retbuf), "%lu.%.2lu", val/100, val%100);
 	return (retbuf);
 }
 
@@ -1180,7 +1180,7 @@ p_secstodate (u_long secs) {
 #endif
 	mytime->tm_year += 1900;
 	mytime->tm_mon += 1;
-	sprintf(output, "%04d%02d%02d%02d%02d%02d",
+	snprintf(output,(int) sizeof(output), "%04d%02d%02d%02d%02d%02d",
 		mytime->tm_year, mytime->tm_mon, mytime->tm_mday,
 		mytime->tm_hour, mytime->tm_min, mytime->tm_sec);
 	return (output);

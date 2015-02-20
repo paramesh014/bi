@@ -52,9 +52,9 @@ extern int sched_setparam(pid_t, const struct sched_param*);
 extern int sched_getparam(pid_t, struct sched_param*);
 extern int sched_rr_get_interval(pid_t, struct timespec*);
 
+extern int clone(int (*)(void*), void*, int, void*, ...); //paramesh from 57 to 55
 #ifdef _GNU_SOURCE
 
-extern int clone(int (*)(void*), void*, int, void*, ...);
 extern int unshare(int);
 extern int sched_getcpu(void);
 extern int setns(int, int);

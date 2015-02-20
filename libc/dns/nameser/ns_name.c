@@ -101,7 +101,7 @@ static int		decode_bitstring(const unsigned char **,
  *	All other domains are returned in non absolute form
  */
 int
-ns_name_ntop(const u_char *src, char *dst, size_t dstsiz)
+ ns_name_ntop(const u_char *src, char *dst, size_t dstsiz)
 {
 	const u_char *cp;
 	char *dn, *eom;

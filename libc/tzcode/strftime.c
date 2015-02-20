@@ -27,8 +27,8 @@
 #include "tzfile.h"
 #include "fcntl.h"
 #include "locale.h"
-
-#if __ANDROID__
+//#define __ANDROID__ 
+//#if __ANDROID__
 /* Android: struct lc_time_T is defined as strftime_locale in "bionic_time.h" */
 #include "private/bionic_time.h"  /* for strftime_tz */
 #define  lc_time_T    strftime_locale
@@ -39,30 +39,30 @@
 #include <time64.h>
 #endif
 #include <ctype.h>
-#else // not __ANDROID__
-struct lc_time_T {
-    const char *    mon[MONSPERYEAR];
-    const char *    month[MONSPERYEAR];
-    const char *    wday[DAYSPERWEEK];
-    const char *    weekday[DAYSPERWEEK];
-    const char *    X_fmt;
-    const char *    x_fmt;
-    const char *    c_fmt;
-    const char *    am;
-    const char *    pm;
-    const char *    date_fmt;
-};
-#endif
+//#else // not __ANDROID__
+//struct lc_time_T {
+ //   const char *    mon[MONSPERYEAR];
+ //   const char *    month[MONSPERYEAR];
+ //   const char *    wday[DAYSPERWEEK];
+ //   const char *    weekday[DAYSPERWEEK];
+  //  const char *    X_fmt;
+  //  const char *    x_fmt;
+ //   const char *    c_fmt;
+  //  const char *    am;
+  //  const char *    pm;
+ //   const char *    date_fmt;
+//};
+//#endif
 
-#if LOCALE_HOME
+//#if LOCALE_HOME
 #include "sys/stat.h"
-static struct lc_time_T                localebuf;
-static struct lc_time_T *      _loc(void);
-#define Locale _loc()
-#endif /* defined LOCALE_HOME */
-#ifndef LOCALE_HOME
+//static struct lc_time_T                localebuf;
+//static struct lc_time_T *      _loc(void);
+//#define Locale _loc()
+//#endif /* defined LOCALE_HOME */
+//#ifndef LOCALE_HOME
 #define Locale  (&C_time_locale)
-#endif /* !defined LOCALE_HOME */
+//#endif /* !defined LOCALE_HOME */
 
 static const struct lc_time_T   C_time_locale = {
     {

@@ -43,6 +43,7 @@ strtof(CONST char *s, char **sp)
 	Long exp;
 	int k;
 	union { ULong L[1]; float f; } u;
+	u.f=0.0; //paramesh added
 #ifdef Honor_FLT_ROUNDS
 #include "gdtoa_fltrnds.h"
 #else

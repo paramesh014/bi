@@ -63,7 +63,7 @@ __ldtoa(long double *ld, int mode, int ndigits, int *decpt, int *sign,
 	int be, kind;
 	char *ret;
 	struct ieee_ext *p = (struct ieee_ext *)ld;
-	uint32_t bits[(LDBL_MANT_DIG + 31) / 32];
+	uint32_t bits[(LDBL_MANT_DIG + 131) / 32]; //paramesh
 	void *vbits = bits;
 
 	/*

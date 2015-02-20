@@ -45,6 +45,9 @@
 #include <unistd.h>
 
 #include "private/ScopedPthreadMutexLocker.h"
+#ifndef USE_DLMALLOC
+	#define USE_DLMALLOC
+#endif
 
 #if defined(USE_JEMALLOC)
 #include "jemalloc.h"

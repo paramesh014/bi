@@ -31,12 +31,12 @@
 #include <sys/param.h>
 #include <sys/time.h>
 #include <sys/mman.h>
-
-#if defined(__ANDROID__)
+#include "private/thread_private.h"
+//#if defined(__ANDROID__)
 #include <sys/stat.h>
 #include <linux/random.h>
 #include "private/libc_logging.h"
-#include "private/thread_private.h"
+
 
 #define explicit_bzero(p, s) memset(p, 0, s)
 
@@ -100,7 +100,7 @@ getentropy/*_urandom*/(u_char *buf, size_t len)
 	errno = save_errno;
 	return 0;
 }
-#endif /* __ANDROID__ */
+//#endif /* __ANDROID__ */
 
 #define KEYSTREAM_ONLY
 #pragma GCC diagnostic push

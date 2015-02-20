@@ -11,7 +11,7 @@
  */
 
 #ifndef lint
-static char rcsid[] = "$FreeBSD$";
+//static char rcsid[] = "$FreeBSD$";
 #endif
 
 /*
@@ -59,10 +59,11 @@ scalbnl (long double x, int n)
         if (k >= 0x7fff) return huge*copysignl(huge,x); /* overflow  */
         if (k > 0) 				/* normal result */
 	    {u.bits.exp = k; return u.e;}
-        if (k <= -128)
-            if (n > 50000) 	/* in case integer overflow in n+k */
-		return huge*copysign(huge,x);	/*overflow*/
+        if (k <= -128){
+            if (n > 50000){ 	/* in case integer overflow in n+k */
+		return huge*copysign(huge,x);}	/*overflow*/
 	    else return tiny*copysign(tiny,x); 	/*underflow*/
+        }
         k += 128;				/* subnormal result */
 	u.bits.exp = k;
         return u.e*0x1p-128;

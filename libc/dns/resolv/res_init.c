@@ -281,7 +281,10 @@ __res_vinit(res_state statp, int preinit) {
 	if (nserv > 0)
 		statp->nscount = nserv;
 #endif
-
+/*#ifdef ANDROID_CHANGES
+	net=NULL;
+	if(!net){;};
+#endif*/ //paramesh
 #ifndef ANDROID_CHANGES /* !ANDROID_CHANGES - IGNORE resolv.conf in Android */
 #define	MATCH(line, name) \
 	(!strncmp(line, name, sizeof(name) - 1) && \

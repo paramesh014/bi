@@ -103,7 +103,7 @@ __vfwscanf(FILE * __restrict fp, const wchar_t * __restrict fmt, __va_list ap)
 {
 	wint_t c;	/* character from format, or conversion */
 	size_t width;	/* field width, or 0 */
-	wchar_t *p;	/* points into all kinds of strings */
+	wchar_t *p=NULL;	/* points into all kinds of strings */
 	int n;		/* handy integer */
 	int flags;	/* flags as defined above */
 	wchar_t *p0;	/* saves original value of p when necessary */
@@ -114,9 +114,9 @@ __vfwscanf(FILE * __restrict fp, const wchar_t * __restrict fmt, __va_list ap)
 	wchar_t buf[BUF];	/* buffer for numeric conversions */
 	const wchar_t *ccls;	/* character class start */
 	const wchar_t *ccle;	/* character class end */
-	int cclcompl;		/* ccl is complemented? */
+	int cclcompl=0;		/* ccl is complemented? */
 	wint_t wi;		/* handy wint_t */
-	char *mbp;		/* multibyte string pointer for %c %s %[ */
+	char *mbp=NULL;		/* multibyte string pointer for %c %s %[ */
 	size_t nconv;		/* number of bytes in mb. conversion */
 	char mbbuf[MB_LEN_MAX];	/* temporary mb. character buffer */
  	mbstate_t mbs;

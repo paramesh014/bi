@@ -115,6 +115,7 @@ extern int chdir(const char *);
 extern int fchdir(int);
 extern int rmdir(const char *);
 extern int pipe(int *);
+#define _GNU_SOURCE //paramesh 
 #ifdef _GNU_SOURCE
 extern int pipe2(int *, int);
 #endif

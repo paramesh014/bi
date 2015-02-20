@@ -306,11 +306,11 @@ __vfprintf(FILE *fp, const char *fmt0, __va_list ap)
 		long double ldbl;
 	} fparg;
 	int expt;		/* integer value of exponent */
-	char expchar;		/* exponent character: [eEpP\0] */
+	char expchar=' ';		/* exponent character: [eEpP\0] */
 	char *dtoaend;		/* pointer to end of converted digits */
-	int expsize;		/* character count for expstr */
-	int lead;		/* sig figs before decimal or group sep */
-	int ndig;		/* actual number of digits returned by dtoa */
+	int expsize=0;		/* character count for expstr */
+	int lead=0;		/* sig figs before decimal or group sep */
+	int ndig=0;		/* actual number of digits returned by dtoa */
 	char expstr[MAXEXPDIG+2];	/* buffer for exponent string: e+ZZZ */
 	char *dtoaresult = NULL;
 #endif
@@ -348,7 +348,7 @@ __vfprintf(FILE *fp, const char *fmt0, __va_list ap)
 
 	static const char xdigs_lower[16] = "0123456789abcdef";
 	static const char xdigs_upper[16] = "0123456789ABCDEF";
-
+	xdigs = xdigs_lower; //paramesh added
 	/*
 	 * BEWARE, these `goto error' on error, and PAD uses `n'.
 	 */
